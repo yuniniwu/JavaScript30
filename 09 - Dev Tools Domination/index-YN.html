@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p class="ouch" onClick="makeGreen()">×BREAK×DOWN×</p>
+  <h1>TEST</h1>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log('hello')
+
+    // Interpolated
+    console.log('hi %s, total payment is %i', 'Jack', 3000)
+    const name = 'Bob'
+    console.log(`this is ES6 syntax, hi ${name}`)
+
+    // Styled
+    console.log('%c I am some great text', 'font-size: 36px; color: red; padding:30px;')
+
+    // warning!
+    console.warn('Oh Nooo')
+
+    // Error :|
+    console.error('sth got wrong')
+
+    // Info
+    console.info('today is sunny day')
+
+    // Testing
+    const p = document.querySelector('p')
+    console.assert(p.classList.contains('ouches'), 'Something is wrong!')
+
+    // clearing
+    const test = 123
+    console.log(test)
+    console.clear()
+    console.log(test)  // 還是會印出 123
+
+    // Viewing DOM Elements
+    console.log(p)
+    // console.log(h1)   // h1 is not defined
+    const h1 = document.querySelector('h1')
+    console.log(h1)      // <h1>TEST</h1>
+    console.dir(p)
+    // Grouping together
+    dogs.forEach( dog => {
+      console.groupCollapsed(`${dog.name}`)
+      console.log(`This is ${dog.name}`)
+      console.log(`${dog.name} is ${dog.age} years old`)
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`)
+      console.groupEnd(`${dog.name}`)
+    })
+
+    // counting
+    console.count('Wes')
+    console.count('Wes')
+    console.count('S')
+    console.count('Wes')
+    console.count('S')
+    console.count('S')
+    console.count('S')
+
+    // timing
+    console.time('fetching data')
+    fetch('https://api.github.com/users/yuniniwu')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data')
+        console.log(data)
+      })
+  </script>
+</body>
+</html>
