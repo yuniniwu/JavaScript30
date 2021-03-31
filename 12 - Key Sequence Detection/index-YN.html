@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+<body>
+<script>
+
+let input = []
+
+// konami code
+const secretCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowLeftArrowRightArrowRightbaEnter'
+window.addEventListener('keyup', (e) => {
+  input.push(e.key)
+  input.splice(-secretCode.length - 1, input.length - secretCode.length);
+  if(input.join('').includes(secretCode)) {
+    cornify_add();
+  }
+  console.log(input.join(''))
+})
+
+</script>
+</body>
+</html>
